@@ -33,6 +33,13 @@ body {
   background-color: var(--bg-primary);
   color: var(--text-primary);
   transition: background-color 0.3s ease, color 0.3s ease;
+  overflow-x: hidden;
+  width: 100%;
+  position: relative;
+  word-wrap: break-word;
+  -webkit-hyphens: auto;
+  -ms-hyphens: auto;
+  hyphens: auto;
 }
 
 .dark {
@@ -1023,7 +1030,7 @@ main {
   display: flex;
   justify-content: flex-end;
   align-items: flex-start;
-  transition: all 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   opacity: 0;
   visibility: hidden;
 }
@@ -1035,34 +1042,39 @@ main {
 }
 
 .apps-menu-content {
-  background: var(--bg-primary);
-  border-radius: 0.5rem;
-  padding: 1rem;
-  width: 320px;
+  background: rgba(17, 24, 39, 0.7);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  width: 340px;
   margin-top: 4rem;
   margin-right: 1rem;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-  transform: translateY(-20px);
-  transition: transform 0.3s ease;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(4px);
+  transform: translateY(-20px) scale(0.95);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .apps-menu.active .apps-menu-content {
-  transform: translateY(0);
+  transform: translateY(0) scale(1);
 }
 
 .apps-menu-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 1.5rem;
+  margin-bottom: 2rem;
   padding-bottom: 1rem;
-  border-bottom: 1px solid var(--card-border);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .apps-menu-header h3 {
   font-size: 1.25rem;
   font-weight: 600;
   color: var(--text-primary);
+  background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .apps-menu-close {
@@ -1073,11 +1085,18 @@ main {
   cursor: pointer;
   transition: all 0.3s ease;
   padding: 0.5rem;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .apps-menu-close:hover {
   color: var(--primary-color);
   transform: rotate(90deg);
+  background: rgba(255, 255, 255, 0.1);
 }
 
 .apps-grid {
@@ -1090,45 +1109,131 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 1rem;
-  border-radius: 0.75rem;
-  background: var(--card-bg);
-  border: 1px solid var(--card-border);
-  transition: all 0.3s ease;
+  padding: 1.25rem;
+  border-radius: 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   text-decoration: none;
   color: var(--text-primary);
+  position: relative;
+  overflow: hidden;
+}
+
+.app-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  transform: translateX(-100%);
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .app-item:hover {
-  background: var(--glass-bg);
+  background: rgba(255, 255, 255, 0.1);
   border-color: var(--primary-color);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+.app-item:hover::before {
+  transform: translateX(100%);
 }
 
 .app-item i {
-  font-size: 1.5rem;
-  margin-bottom: 0.5rem;
-  color: var(--primary-color);
+  font-size: 1.75rem;
+  margin-bottom: 0.75rem;
+  transition: all 0.3s ease;
+  background: linear-gradient(45deg, #FF6B6B, #4ECDC4);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+}
+
+.app-item:nth-child(1) i {
+  background: linear-gradient(45deg, #FF6B6B, #FF8E53);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.app-item:nth-child(2) i {
+  background: linear-gradient(45deg, #4ECDC4, #45B7D1);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.app-item:nth-child(3) i {
+  background: linear-gradient(45deg, #96E6A1, #D4FC79);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.app-item:nth-child(4) i {
+  background: linear-gradient(45deg, #A8EDEA, #FED6E3);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.app-item:hover i {
+  transform: scale(1.1);
+  filter: drop-shadow(0 0 12px rgba(0, 0, 0, 0.2));
 }
 
 .app-item span {
   font-size: 0.875rem;
   text-align: center;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.app-item:hover span {
+  color: var(--primary-color);
 }
 
 /* Light mode adjustments */
 .light .apps-menu-content {
-  background: var(--bg-secondary);
-  border: 1px solid var(--card-border);
+  background: rgba(248, 250, 252, 0.7);
+  border: 1px solid rgba(99, 102, 241, 0.1);
 }
 
 .light .app-item {
-  background: var(--bg-primary);
+  background: rgba(255, 255, 255, 0.5);
+  border: 1px solid rgba(99, 102, 241, 0.1);
 }
 
 .light .app-item:hover {
-  background: var(--glass-bg);
+  background: rgba(255, 255, 255, 0.8);
+  border-color: var(--primary-color);
+}
+
+.light .apps-menu-header {
+  border-bottom: 1px solid rgba(99, 102, 241, 0.1);
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+  .apps-menu-content {
+    width: 90%;
+    max-width: 320px;
+    margin-right: 0.5rem;
+    margin-top: 3.5rem;
+    padding: 1.25rem;
+  }
+
+  .app-item {
+    padding: 1rem;
+  }
+
+  .app-item i {
+    font-size: 1.5rem;
+  }
+
+  .app-item span {
+    font-size: 0.8rem;
+  }
 }
 
 /* Google Apps Grid Icon */
@@ -1163,4 +1268,372 @@ main {
 
 .light .mobile-menu-button:hover .grid-icon span {
   background-color: #202124;
+}
+
+/* Mobile text wrapping and overflow handling */
+@media (max-width: 768px) {
+  /* Container width fixes */
+  .container {
+    width: 100%;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    box-sizing: border-box;
+    overflow-x: hidden;
+  }
+
+  section {
+    width: 100%;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    box-sizing: border-box;
+    overflow-x: hidden;
+  }
+
+  /* Heading size adjustments */
+  h1 {
+    font-size: 1.75rem !important;
+    line-height: 1.3;
+  }
+
+  h2 {
+    font-size: 1.5rem !important;
+    line-height: 1.3;
+  }
+
+  h3 {
+    font-size: 1.25rem !important;
+    line-height: 1.3;
+  }
+
+  h4 {
+    font-size: 1.1rem !important;
+    line-height: 1.3;
+  }
+
+  /* Project overlay text handling */
+  .project-overlay {
+    padding: 0.75rem;
+    width: 100%;
+    overflow-x: hidden;
+  }
+
+  .project-overlay h3 {
+    width: 100%;
+    padding: 0;
+    font-size: 1rem;
+    line-height: 1.4;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
+  }
+
+  .project-overlay p {
+    width: 100%;
+    padding: 0;
+    font-size: 0.85rem;
+    line-height: 1.5;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
+  }
+
+  /* Timeline text handling */
+  .timeline-item {
+    padding-left: 1.25rem;
+    width: 100%;
+    box-sizing: border-box;
+    overflow-x: hidden;
+    margin-bottom: 1.5rem;
+  }
+
+  .timeline-item h3 {
+    font-size: 0.9rem !important;
+    line-height: 1.3;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
+    margin-bottom: 0.25rem;
+  }
+
+  .timeline-item h4 {
+    font-size: 0.85rem !important;
+    line-height: 1.3;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
+    margin-bottom: 0.25rem;
+  }
+
+  .timeline-item p {
+    font-size: 0.8rem;
+    line-height: 1.4;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
+  }
+
+  .timeline-item::before {
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 2px;
+  }
+
+  .timeline-item::after {
+    left: -0.4rem;
+    top: 0.25rem;
+    height: 0.8rem;
+    width: 0.8rem;
+  }
+
+  /* Skill card text handling */
+  .skill-card {
+    padding: 0.5rem;
+    width: 100%;
+    box-sizing: border-box;
+    overflow-x: hidden;
+  }
+
+  .skill-card h4 {
+    font-size: 0.85rem;
+    line-height: 1.4;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
+  }
+
+  /* Contact form text handling */
+  .contact-form input,
+  .contact-form textarea {
+    padding: 0.5rem;
+    font-size: 0.85rem;
+    width: 100%;
+    box-sizing: border-box;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
+
+  /* Grid layout fixes */
+  .grid {
+    width: 100%;
+    gap: 0.5rem;
+    box-sizing: border-box;
+    overflow-x: hidden;
+  }
+
+  .grid > * {
+    width: 100%;
+    box-sizing: border-box;
+    overflow-x: hidden;
+  }
+
+  /* Project card fixes */
+  .project-card {
+    width: 100%;
+    box-sizing: border-box;
+    overflow-x: hidden;
+  }
+
+  .project-overlay .flex {
+    width: 100%;
+    padding: 0;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+    box-sizing: border-box;
+    overflow-x: hidden;
+  }
+
+  .project-overlay .flex.space-x-3 {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+
+  .project-overlay .flex.space-x-3 a {
+    min-width: auto;
+    padding: 0.5rem;
+    white-space: normal;
+    text-align: center;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    font-size: 0.8rem;
+  }
+
+  /* Skills section mobile adjustments */
+  .skills-section h3 {
+    font-size: 1.4rem !important;
+    margin-bottom: 1rem;
+  }
+
+  .skill-card {
+    padding: 0.5rem;
+    min-height: 40px;
+  }
+
+  .skill-icon {
+    font-size: 0.9rem;
+  }
+
+  .skill-card h4 {
+    font-size: 0.6rem;
+    line-height: 1.2;
+    margin: 0;
+  }
+
+  .grid.grid-cols-2.md\:grid-cols-4 {
+    gap: 0.5rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .container {
+    padding-left: 0.25rem;
+    padding-right: 0.25rem;
+  }
+
+  section {
+    padding-left: 0.25rem;
+    padding-right: 0.25rem;
+  }
+
+  h1 {
+    font-size: 1.5rem !important;
+  }
+
+  h2 {
+    font-size: 1.25rem !important;
+  }
+
+  h3 {
+    font-size: 1.1rem !important;
+  }
+
+  h4 {
+    font-size: 1rem !important;
+  }
+
+  .project-overlay h3 {
+    font-size: 0.9rem;
+  }
+
+  .project-overlay p {
+    font-size: 0.8rem;
+  }
+
+  .timeline-item h3 {
+    font-size: 0.85rem !important;
+  }
+
+  .timeline-item h4 {
+    font-size: 0.8rem !important;
+  }
+
+  .timeline-item p {
+    font-size: 0.75rem;
+  }
+
+  .timeline-item {
+    margin-bottom: 1.25rem;
+  }
+
+  .skill-card h4 {
+    font-size: 0.8rem;
+  }
+
+  .contact-form input,
+  .contact-form textarea {
+    font-size: 0.8rem;
+  }
+
+  /* Skills section mobile adjustments */
+  .skills-section h3 {
+    font-size: 1.3rem !important;
+  }
+
+  .skill-card {
+    padding: 0.4rem;
+    min-height: 35px;
+  }
+
+  .skill-icon {
+    font-size: 0.85rem;
+  }
+
+  .skill-card h4 {
+    font-size: 0.55rem;
+  }
+}
+
+/* Base text wrapping and overflow handling */
+html, body {
+  overflow-x: hidden;
+  width: 100%;
+  position: relative;
+  word-wrap: break-word;
+  -webkit-hyphens: auto;
+  -ms-hyphens: auto;
+  hyphens: auto;
+}
+
+/* Global text wrapping */
+* {
+  max-width: 100%;
+  box-sizing: border-box;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+/* Timeline date and location styling */
+.timeline-date {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+}
+
+.timeline-date .date {
+  font-weight: 500;
+  color: var(--primary-color);
+}
+
+.timeline-date .location {
+  position: relative;
+  padding-left: 0.5rem;
+}
+
+.timeline-date .location::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 4px;
+  height: 4px;
+  background-color: var(--text-secondary);
+  border-radius: 50%;
+}
+
+@media (max-width: 768px) {
+  .timeline-date {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.25rem;
+    margin-top: 0.5rem;
+  }
+  
+  .timeline-date .date {
+    font-size: 0.8rem;
+  }
+  
+  .timeline-date .location {
+    font-size: 0.75rem;
+    padding-left: 0;
+  }
+
+  .timeline-date .location::before {
+    display: none;
+  }
 } 
