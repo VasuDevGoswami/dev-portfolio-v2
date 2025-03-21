@@ -410,6 +410,117 @@ body {
 }
 
 .light input, .light textarea {
+  background: var(--bg-secondary);
+  border-color: var(--card-border);
+  color: var(--text-primary);
+}
+
+.light input:focus, .light textarea:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.1);
+}
+
+.light .text-gray-300 {
+  color: var(--text-secondary);
+}
+
+.light .text-gray-400 {
+  color: var(--text-secondary);
+}
+
+.light .bg-gray-800 {
+  background-color: var(--bg-secondary);
+}
+
+.light .bg-gray-900 {
+  background-color: var(--bg-primary);
+}
+
+.light .border-gray-800 {
+  border-color: var(--card-border);
+}
+
+.light .hover\:bg-gray-700:hover {
+  background-color: rgba(79, 70, 229, 0.1);
+}
+
+.light .hover\:text-white:hover {
+  color: var(--primary-color);
+}
+
+.light .text-gray-300,
+.light .text-gray-400,
+.light .text-gray-500 {
+  color: #64748b;
+}
+
+.light .text-gray-600,
+.light .text-gray-700,
+.light .text-gray-800,
+.light .text-gray-900 {
+  color: #1e293b;
+}
+
+.light .text-white {
+  color: #1e293b;
+}
+
+.light .text-indigo-400 {
+  color: #6366f1;
+}
+
+.light .text-indigo-300 {
+  color: #4f46e5;
+}
+
+.light .bg-gray-800 {
+  background-color: #f1f5f9;
+}
+
+.light .bg-gray-900 {
+  background-color: #f8fafc;
+}
+
+.light .border-gray-800 {
+  border-color: #e2e8f0;
+}
+
+.light .hover\:bg-gray-700:hover {
+  background-color: rgba(79, 70, 229, 0.1);
+}
+
+.light .hover\:text-white:hover {
+  color: #4f46e5;
+}
+
+.light .project-overlay {
+  background: rgba(248, 250, 252, 0.95);
+}
+
+.light .project-overlay h3 {
+  color: #1e293b;
+}
+
+.light .project-overlay p {
+  color: #64748b;
+}
+
+.light .project-overlay .rounded-full {
+  background: rgba(79, 70, 229, 0.1);
+  border: 1px solid rgba(79, 70, 229, 0.2);
+  color: #4f46e5;
+}
+
+.light .timeline-item::before {
+  background: linear-gradient(to bottom, #4f46e5, #7c3aed);
+}
+
+.light .timeline-item::after {
+  background: #4f46e5;
+  border: 2px solid #f8fafc;
+}
+
+.light input, .light textarea {
   background: #ffffff;
   border-color: #e2e8f0;
   color: #1e293b;
