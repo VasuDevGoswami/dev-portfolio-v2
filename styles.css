@@ -355,6 +355,11 @@ body {
   border-radius: 2px;
 }
 
+.skills-section .grid {
+  margin-top: 2rem;
+  padding-top: 1rem;
+}
+
 .skill-card:hover .skill-icon {
   filter: drop-shadow(0 0 8px currentColor);
   transform: scale(1.1);
@@ -1080,8 +1085,19 @@ main {
   }
 
   .skills-section h3 {
-    font-size: 1.4rem !important;
-    margin-bottom: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .skills-section .grid {
+    margin-top: 1.5rem;
+    padding-top: 0.75rem;
+  }
+
+  .skills-section {
+    margin-top: -1.5rem;
+    padding-top: 0.75rem;
+    margin-bottom: 2.5rem;
+    padding: 2rem;
   }
 
   .skill-card {
@@ -1201,7 +1217,19 @@ main {
   }
 
   .skills-section h3 {
-    font-size: 1.3rem !important;
+    margin-bottom: 1.75rem;
+  }
+
+  .skills-section .grid {
+    margin-top: 1.25rem;
+    padding-top: 0.5rem;
+  }
+
+  .skills-section {
+    margin-top: -1.5rem;
+    padding-top: 0.5rem;
+    margin-bottom: 2.5rem;
+    padding: 2rem;
   }
 
   .skill-card {
@@ -1267,5 +1295,49 @@ section {
   #contact {
     margin-top: -2.5rem;
     padding-top: 0.5rem;
+  }
+}
+
+.created-by {
+  text-align: center;
+  padding: 1rem 0;
+}
+
+.created-by p {
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+  margin: 0;
+}
+
+.created-by a {
+  color: var(--primary-color);
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.created-by a:hover {
+  color: var(--secondary-color);
+}
+
+.light .created-by p {
+  color: var(--text-secondary);
+}
+
+.light .created-by a {
+  color: var(--primary-color);
+}
+
+.light .created-by a:hover {
+  color: var(--secondary-color);
+}
+
+@media (max-width: 768px) {
+  .created-by {
+    padding: 0.75rem 0;
+  }
+  
+  .created-by p {
+    font-size: 0.8rem;
   }
 } 
